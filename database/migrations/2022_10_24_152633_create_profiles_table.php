@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
+            $table->string('share_url')->unique();
             $table->string('wifi_ssid')->nullable();
             $table->string('wifi_password')->nullable();
             $table->integer('duration')->nullable();

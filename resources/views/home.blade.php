@@ -26,7 +26,7 @@
     
     <!-- panel -->
     <form autocomplete="off" method="POST" action="/generate" >
-        @csrf
+    @csrf
     <div class="max-w-3xl mx-auto mt-40 text-center sm:px-6 lg:px-8">
         <!-- Content goes here -->
         <div class="m-5">
@@ -72,7 +72,7 @@
                 
             </div>
             <!-- end body -->
-            <div class="px-4 py-4 sm:px-6">
+            <div class="px-4 py-4 text-center sm:px-6">
               <!-- Content goes here -->
               <button type="submit" class="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 <!-- Heroicon name: mini/envelope -->
@@ -89,6 +89,8 @@
             <!-- end footer -->
           </div>
         </form>
+        
+        
         
 
 </body>

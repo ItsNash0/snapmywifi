@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'share_url',
+        'wifi_ssid',
+        'wifi_password',
+        'duration',
+    ];
 }

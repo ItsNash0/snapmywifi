@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,11 +20,39 @@ Route::get('/', function () {
 });
 
 Route::post('/generate', function (Request $request) {
-   return view('home');
+
+    $wifi = $request->validate([
+        'wifi_ssid' => 'required|string',
+        'wifi_password' => 'required|string',
+        'duration' => 'required|integer',
+    ]);
+
+    $random = str()->random(8);
+
+    $profile = Profile::create([
+        'share_url' => $random,
+        'wifi_ssid' => $wifi['wifi_ssid'],
+        'wifi_password' => $wifi['wifi_password'],
+        'duration' => $wifi['duration'],
+    ]);
+
+    return redirect()->route('qr', ['share_url' => $profile->share_url]);
+
    
-    // return response()->json([
-    //     'wifi_ssid' => $request->,
-    //     'wifi_password' => request('wifi_password'),
-    //     'duration' => request('duration'),
-    // ]);
-});
+})->name('generate');
+
+Route::get('/{share_url}', function ($share_url) {
+    $profile = Profile::where('share_url', $share_url)->firstOrFail();
+    return view('qr', compact('profile'));
+})->name('qr');
+
+Route::get('/{share_url}/download', function ($share_url) {
+    $profile = Profile::where('share_url', $share_url)->firstOrFail();
+    
+    return response()
+            ->view('profile', compact('profile'))
+            ->header('Content-Type', 'application/x-apple-aspen-config');
+
+})->name('download');
+
+
