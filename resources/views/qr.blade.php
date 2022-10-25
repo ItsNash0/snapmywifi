@@ -26,16 +26,19 @@
     
     <!-- panel -->
     
-    <div class="max-w-3xl mx-auto mt-40 text-center sm:px-6 lg:px-8">
+    <div class="max-w-xl px-6 mx-auto mt-16 text-center sm:px-6 lg:px-8">
         <!-- Content goes here -->
         <div class="m-5">
-            <h1 class="text-4xl font-extrabold">SnapMyWifi - {{ $profile['wifi_ssid'] }}</h1>
-            <h3 class="text-2xl font-semibold"></h3>
-        </div>
+            
+            <h1 class="text-4xl font-extrabold text-transparent md:text-5xl bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">SnapMyWifi</h1>
+            
+            <h3 class="pt-2 text-2xl font-semibold">{{ $profile['wifi_ssid'] }}</h3>
+            <h3 class="pt-2 font-semibold text-xlxl">Enjoy WiFi for {{ $profile['duration'] }} Hours</h3>
+          </div>
         <div class="overflow-hidden text-left bg-gray-800 divide-y divide-gray-900 rounded-lg shadow">
             <div class="px-4 py-5 sm:px-6">
                 
-                    <h3 class="text-lg font-medium font-bold leading-6 text-gray-200">Create Wifi QR Code</h3>
+                    <h3 class="text-lg font-medium font-bold leading-6 text-gray-200">Scan Wifi QR Code</h3>
                  
                   
             </div>
@@ -43,7 +46,7 @@
             <div class="px-4 py-5 t sm:p-6">
                 
                 
-                <img class="mx-auto rounded-3xl" src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{request()->url()}}">
+                <img class="mx-auto rounded-3xl" src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl={{request()->url()}}">
                 
                
         
@@ -76,6 +79,16 @@
             <!-- end footer -->
           </div>
         </form>
+
+        <div class="flex items-center justify-center pt-5 mx-auto">
+          <h1 class="text-xs"><a class="text-indigo-400" href="https://twitter.com/ItsNash0">@ItsNash0</a> & <a class="text-indigo-400" href="https://twitter.com/claradlatorre"> @claradlatorre</a> with    
+          </h1>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-red-600">
+              <path d="M9.653 16.915l-.005-.003-.019-.01a20.759 20.759 0 01-1.162-.682 22.045 22.045 0 01-2.582-1.9C4.045 12.733 2 10.352 2 7.5a4.5 4.5 0 018-2.828A4.5 4.5 0 0118 7.5c0 2.852-2.044 5.233-3.885 6.82a22.049 22.049 0 01-3.744 2.582l-.019.01-.005.003h-.002a.739.739 0 01-.69.001l-.002-.001z" />
+      </svg>
+      </div>
+
+      <h1 class="py-2 text-sm text-gray-400">No user data is collected and wifi credentials are encrypted.</h1>
         
         
         

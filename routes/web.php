@@ -2,6 +2,7 @@
 
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::post('/generate', function (Request $request) {
+Route::post('/', function (Request $request) {
 
     $wifi = $request->validate([
         'wifi_ssid' => 'required|string',
@@ -42,7 +43,9 @@ Route::post('/generate', function (Request $request) {
 })->name('generate');
 
 Route::get('/{share_url}', function ($share_url) {
-    $profile = Profile::where('share_url', $share_url)->firstOrFail();
+    $profile = Cache::rememberForever($share_url, function () use ($share_url) {
+        return Profile::where('share_url', $share_url)->first();
+    });
     return view('qr', compact('profile'));
 })->name('qr');
 
